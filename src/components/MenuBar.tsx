@@ -2,23 +2,19 @@ import { elementIdsState, elementState } from '@/states/elements'
 import { useRecoilCallback } from 'recoil'
 
 const MenuBar = () => {
-  const onClickJson = useRecoilCallback(
-    ({ snapshot }) =>
-      async () => {
-        const elementIds = await snapshot.getPromise(elementIdsState)
+  const onClickJson = useRecoilCallback(({ snapshot }) => async () => {
+    const elementIds = await snapshot.getPromise(elementIdsState)
 
-        const elements = await Promise.all(
-          elementIds.map(async (id) => snapshot.getPromise(elementState(id)))
-        )
+    const elements = await Promise.all(
+      elementIds.map(async (id) => snapshot.getPromise(elementState(id)))
+    )
 
-        console.log(elements)
-      },
-    []
-  )
+    console.log(JSON.stringify(elements, null, 2))
+  })
 
   return (
     <div>
-      <button onClick={onClickJson}>JSON</button>
+      <button onClick={onClickJson}>Save</button>
     </div>
   )
 }
