@@ -14,7 +14,6 @@ const Element: React.FC<RectangleProps> = ({ elementId }) => {
   )
 
   const onMouseDownElement = useRecoilCallback(({ set }) => () => {
-    console.log('mousedown')
     set(selectedElementIdState, elementId)
   })
 
