@@ -32,8 +32,6 @@ export const selectedElementState = selector<ElementType | null>({
 
     if (selectedElementId === null) return null
 
-    const element = get(elementState(selectedElementId))
-
     return get(elementState(selectedElementId))
   },
   set: ({ get, set }, newValue) => {
